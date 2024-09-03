@@ -1,5 +1,5 @@
 // src/user/dto/create-user.dto.ts
-import { IsString, IsEmail } from 'class-validator';
+import { IsString, IsEmail , IsArray } from 'class-validator';
 
 export class CreateUserDto {
   @IsString()
@@ -10,4 +10,11 @@ export class CreateUserDto {
 
   @IsString()
   password: string;
+
+  @IsArray()
+  @IsString({ each: true })
+  readonly enrolledCourses: string[];
+
+
+  
 }
